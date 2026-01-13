@@ -163,7 +163,7 @@ fig <- heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_vs_2D(simulated_coll
                                                                   metrics,
                                                                   threshold = 0.05)
 
-setwd("~/R/plots/simulated_collection_analysis")
+setwd("~/R/plots/S3")
 pdf(paste(group_comparison_name, "heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_vs_2D.pdf", sep = "_"), width = 10, height = 3)
 print(fig)
 dev.off()
@@ -173,7 +173,7 @@ fig <- heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_subtract_2D(simulate
                                                                         metrics,
                                                                         threshold = 0.05)
 
-setwd("~/R/plots/simulated_collection_analysis")
+setwd("~/R/plots/S3")
 pdf(paste(group_comparison_name, "heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_subtract_2D.pdf", sep = "_"), width = 10, height = 2)
 print(fig)
 dev.off()
@@ -338,10 +338,8 @@ heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_subtra
     column_title_gp = gpar(fontsize = 16),
     column_title_side = "bottom",
     
-    heatmap_legend_param = list(
-      title_gp = gpar(fontsize = 14),
-      labels_gp = gpar(fontsize = 14)
-    )
+    show_heatmap_legend = FALSE
+    
   )
   
   
@@ -359,7 +357,7 @@ metrics <- c("AMD",
 fig <- heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_vs_2D(simulated_collection_analyses,
                                                                                        metrics,
                                                                                        0.05)
-setwd("~/R/plots/simulated_collection_analysis")
+setwd("~/R/plots/S3")
 pdf("heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_vs_2D.pdf", width = 9, height = 8.5)
 print(fig)
 dev.off()
@@ -370,7 +368,7 @@ dev.off()
 fig <- heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_subtract_2D(simulated_collection_analyses,
                                                                                              metrics,
                                                                                              0.05)
-setwd("~/R/plots/simulated_collection_analysis")
+setwd("~/R/plots/S3")
 pdf("heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_subtract_2D.pdf", width = 7, height = 8)
 print(fig)
 dev.off()

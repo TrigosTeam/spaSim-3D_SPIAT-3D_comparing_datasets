@@ -276,7 +276,7 @@ metrics <- c("AMD",
 # Plot 1. Box plot for p-values
 fig <- box_plot_p_values_3D_vs_2D(simulated_collection_analysis)
 
-setwd("~/R/plots/simulated_collection_analysis")
+setwd("~/R/plots/S3")
 pdf(paste(group_comparison_name, "box_plot_p_values_3D_vs_2D.pdf", sep = "_"), width = 10, height = 8)
 print(fig)
 dev.off()
@@ -286,7 +286,7 @@ dev.off()
 figs <- box_plot_p_values_for_each_metric_and_pair_3D_vs_2D(simulated_collection_analysis,
                                                             metrics)
 
-setwd("~/R/plots/simulated_collection_analysis")
+setwd("~/R/plots/S3")
 pdf(paste(group_comparison_name, "box_plot_p_values_for_each_metric_and_pair_3D_vs_2D.pdf", sep = "_"))
 for (metric in metrics) {
   print(figs[[metric]])
@@ -297,7 +297,7 @@ dev.off()
 figs <- box_plot_log_p_values_for_each_metric_and_pair_3D_vs_2D(simulated_collection_analysis,
                                                                 metrics)
 
-setwd("~/R/plots/simulated_collection_analysis")
+setwd("~/R/plots/S3")
 pdf(paste(group_comparison_name, "box_plot_log_p_values_for_each_metric_and_pair_3D_vs_2D.pdf", sep = "_"))
 for (metric in metrics) {
   print(figs[[metric]])
@@ -310,7 +310,7 @@ fig <- heatmap_p_values_for_each_metric_and_pair_3D_vs_2D(simulated_collection_a
                                                           metrics,
                                                           threshold = 0.05)
 
-setwd("~/R/plots/simulated_collection_analysis")
+setwd("~/R/plots/S3")
 pdf(paste(group_comparison_name, "heatmap_p_values_for_each_metric_and_pair_3D_vs_2D.pdf", sep = "_"), width = 10, height = 8)
 print(fig)
 dev.off()
@@ -320,7 +320,7 @@ fig <- heatmap_p_values_for_each_metric_and_pair_3D_subtract_2D(simulated_collec
                                                                 metrics,
                                                                 threshold = 0.05)
 
-setwd("~/R/plots/simulated_collection_analysis")
+setwd("~/R/plots/S3")
 pdf(paste(group_comparison_name, "heatmap_p_values_for_each_metric_and_pair_3D_subtract_2D.pdf", sep = "_"), width = 10, height = 4)
 print(fig)
 dev.off()
