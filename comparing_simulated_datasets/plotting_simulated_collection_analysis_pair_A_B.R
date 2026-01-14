@@ -369,7 +369,7 @@ fig <- heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D
                                                                                              metrics,
                                                                                              0.05)
 setwd("~/R/plots/S3")
-pdf("heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_subtract_2D.pdf", width = 7, height = 8)
+pdf("heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_subtract_2D.pdf", width = 6.5, height = 7.5)
 print(fig)
 dev.off()
 
