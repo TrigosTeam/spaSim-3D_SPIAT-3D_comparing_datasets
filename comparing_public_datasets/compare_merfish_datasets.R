@@ -5,6 +5,12 @@ library(dplyr)
 library(tidyr)
 library(gridExtra)
 library(ComplexHeatmap)
+library(cowplot)
+library(ggplot2)
+library(S4Vectors)
+library(stringr)
+library(scales)
+library(DescTools)
 ### Read analysis data -------
 setwd("~/R/public_data_analysis")
 
