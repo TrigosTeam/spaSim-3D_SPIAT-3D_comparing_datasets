@@ -297,7 +297,7 @@ analyse_simulated_set <- function(simulation_metadata_for_simulated_group1,
   thresholds_colnames <- paste("t", thresholds, sep = "")
   
   # z-coords for slices
-  bottom_z_coord_of_slices <- c(145, 175, 205)
+  bottom_z_coord_of_slices <- c(85, 95, 105, 115, 125, 135, 145, 155, 165, 175, 185, 195, 205)
   top_z_coord_of_slices <- bottom_z_coord_of_slices + 10
   n_slices <- length(bottom_z_coord_of_slices)
   
