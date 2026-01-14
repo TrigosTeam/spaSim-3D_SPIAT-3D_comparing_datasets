@@ -1,3 +1,7 @@
+# Set seed for consistency
+set.seed(678999821)
+
+
 # NORMAL RANGES --------------------------------------------------- #
 # ellipsoid_x_radii_range <- c(min = 75, max = 125)
 # ellipsoid_y_radii_range <- c(min = 75, max = 125)
