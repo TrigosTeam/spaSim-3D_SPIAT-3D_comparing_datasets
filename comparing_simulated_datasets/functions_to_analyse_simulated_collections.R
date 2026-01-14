@@ -311,17 +311,12 @@ analyse_simulated_set <- function(simulation_metadata_for_simulated_group1,
     if (length(bottom_z_coord_of_slices) != length(top_z_coord_of_slices)) stop("Lengths of bottom_z_coords_of_slices and top_z_coords_of_slices should be equal.")
     number_of_slices <- length(bottom_z_coord_of_slices)
     
-    for (i in seq(number_of_slices)) {
-      bottom_z_coord_of_slice <- bottom_z_coord_of_slices[i]
-      top_z_coord_of_slice <- top_z_coord_of_slices[i]
-      z_coords_of_cells_in_spe <- spatialCoords(spe)[ , "Cell.Z.Position"]
-      spe_for_slice <- spe[, bottom_z_coord_of_slice < z_coords_of_cells_in_spe & z_coords_of_cells_in_spe < top_z_coord_of_slice]
-      spatialCoords(spe_for_slice) <- spatialCoords(spe_for_slice)[ , c("Cell.X.Position", "Cell.Y.Position")]
-      
-      slices_from_spe[[i]] <- spe_for_slice
-    }
-    
-    random_slice_from_spe <- sample(slices_from_spe, 1)[[1]]
+    i <- sample(length(bottom_z_coord_of_slices), 1) # random index to choose from slice coordinates
+    bottom_z_coord_of_random_slice <- bottom_z_coord_of_slices[i]
+    top_z_coord_of_random_slice <- top_z_coord_of_slices[i]
+    z_coords_of_cells_in_spe <- spatialCoords(spe)[ , "Cell.Z.Position"]
+    random_slice_from_spe <- spe[ , bottom_z_coord_of_random_slice < z_coords_of_cells_in_spe & z_coords_of_cells_in_spe < top_z_coord_of_random_slice]
+    spatialCoords(random_slice_from_spe) <- spatialCoords(random_slice_from_spe)[ , c("Cell.X.Position", "Cell.Y.Position")]
     
     return(random_slice_from_spe)
   }
