@@ -694,7 +694,7 @@ merfish_mouse_brain_cells <- c("ASC", "EXC", "Endo", "INC", "MGC", "OGC", "OPC")
 
 fig_metric_3D_vs_2D_comparison <- plot_metric_3D_vs_2D_comparison(metric_df_list_combined, merfish_mouse_brain_cells, metrics)
 
-setwd("~/R/plots/public_data/merfish_comparison")
+setwd("~/R/plots/public_data/merfish_comparison_flipped")
 pdf("merfish_3D_vs_2D_comparison_flipped.pdf", width = 20, height = 10)
 
 for (metric in metrics) {
@@ -710,7 +710,7 @@ dev.off()
 
 
 fig_metric_3D_vs_2D_comparison_no_box_plot <- plot_metric_3D_vs_2D_comparison_no_box_plot(metric_df_list_combined, merfish_mouse_brain_cells, metrics)
-setwd("~/R/plots/public_data/merfish_comparison")
+setwd("~/R/plots/public_data/merfish_comparison_flipped")
 pdf("merfish_3D_vs_2D_comparison_no_box_plot_flipped.pdf", width = 25, height = 10)
 
 for (metric in metrics) {
@@ -731,7 +731,7 @@ tallies <- tally_number_of_3D_values_in_and_above_and_below_2D_box_plot(metric_d
 
 
 tallies_plot1 <- plot_tallies_with_categories(tallies, metrics)
-setwd("~/R/plots/public_data/merfish_comparison")
+setwd("~/R/plots/public_data/merfish_comparison_flipped")
 pdf("merfish_3D_vs_2D_comparison_heatmaps_flipped.pdf", width = 6, height = 5)
 
 for (metric in metrics) {
@@ -744,7 +744,7 @@ dev.off()
 
 tallies_plot2 <- plot_tallies_with_categories_bar(tallies, metrics)
 
-setwd("~/R/plots/public_data/merfish_comparison")
+setwd("~/R/plots/public_data/merfish_comparison_flipped")
 pdf("merfish_3D_vs_2D_comparison_bar_flipped.pdf", width = 8, height = 3.6)
 
 print(tallies_plot2)
