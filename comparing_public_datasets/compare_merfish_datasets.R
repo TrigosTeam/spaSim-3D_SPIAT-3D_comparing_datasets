@@ -164,20 +164,31 @@ plot_metric_3D_vs_2D_comparison <- function(metric_3D_vs_2D_comparison_results,
                                             metrics) {
   
   sci_clean_threshold <- function(x) {
-    x[!(x %in% range(x, na.rm = T))] <- NA
-    
     sapply(x, function(v) {
-      if (is.na(v)) {
-        return('')
-      }
+      if (is.na(v)) return("")
+      
       if (abs(v) < 1000) {
-        return(as.character(v))   # keep normal numbers
+        return(as.character(v))
       }
-      # scientific notation
-      s <- format(v, scientific = TRUE)   # e.g. "1e+03"
-      s <- gsub("\\+", "", s)             # remove "+"
-      s <- gsub("e0+", "e", s)            # remove leading zeros in exponent
-      s
+      
+      # scientific notation with 1 decimal place
+      s <- formatC(v, format = "e", digits = 1)   # e.g. "1.5e+03"
+      
+      # remove "+" in exponent
+      s <- gsub("e\\+", "e", s)
+      
+      # split mantissa and exponent
+      parts <- strsplit(s, "e")[[1]]
+      mant <- parts[1]
+      exp  <- parts[2]
+      
+      # remove trailing .0 (so 1.0e3 → 1e3)
+      mant <- sub("\\.0$", "", mant)
+      
+      # remove leading zeros in exponent
+      exp <- sub("^0+", "", exp)
+      
+      paste0(mant, "e", exp)
     })
   }
   
@@ -242,20 +253,31 @@ plot_metric_3D_vs_2D_comparison_no_box_plot <- function(metric_3D_vs_2D_comparis
                                                         metrics) {
   
   sci_clean_threshold <- function(x) {
-    x[!(x %in% range(x, na.rm = T))] <- NA
-    
     sapply(x, function(v) {
-      if (is.na(v)) {
-        return('')
-      }
+      if (is.na(v)) return("")
+      
       if (abs(v) < 1000) {
-        return(as.character(v))   # keep normal numbers
+        return(as.character(v))
       }
-      # scientific notation
-      s <- format(v, scientific = TRUE)   # e.g. "1e+03"
-      s <- gsub("\\+", "", s)             # remove "+"
-      s <- gsub("e0+", "e", s)            # remove leading zeros in exponent
-      s
+      
+      # scientific notation with 1 decimal place
+      s <- formatC(v, format = "e", digits = 1)   # e.g. "1.5e+03"
+      
+      # remove "+" in exponent
+      s <- gsub("e\\+", "e", s)
+      
+      # split mantissa and exponent
+      parts <- strsplit(s, "e")[[1]]
+      mant <- parts[1]
+      exp  <- parts[2]
+      
+      # remove trailing .0 (so 1.0e3 → 1e3)
+      mant <- sub("\\.0$", "", mant)
+      
+      # remove leading zeros in exponent
+      exp <- sub("^0+", "", exp)
+      
+      paste0(mant, "e", exp)
     })
   }
   
