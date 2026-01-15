@@ -940,23 +940,23 @@ dev.off()
 
 
 # 3D vs 2D comparison, separated into categorical trends
-fig_metric_2D_vs_2D_comparison_categorised <- plot_metric_2D_vs_2D_comparison_categorised(metric_df_list_combined, stomics_fly_cells, metrics, tallies)
-
-setwd("~/R/plots/public_data/stomics_comparison")
-
-for (category in c("consistent", "inconsistent", "over", "under")) {
-  
-  pdf(paste("stomics_3D_vs_2D_comparison_", category, ".pdf", sep = ""), width = 25, height = 15)
-  
-  for (metric in metrics) {
-    
-    if (length(fig_metric_2D_vs_2D_comparison_categorised[[metric]][[category]]) == 0) {
-      next 
-    }
-    
-    grid.arrange(do.call(arrangeGrob, c(fig_metric_2D_vs_2D_comparison_categorised[[metric]][[category]])))
-  }
-  
-  dev.off() 
-}
+# fig_metric_2D_vs_2D_comparison_categorised <- plot_metric_2D_vs_2D_comparison_categorised(metric_df_list_combined, stomics_fly_cells, metrics, tallies)
+# 
+# setwd("~/R/plots/public_data/stomics_comparison")
+# 
+# for (category in c("consistent", "inconsistent", "over", "under")) {
+#   
+#   pdf(paste("stomics_3D_vs_2D_comparison_", category, ".pdf", sep = ""), width = 25, height = 15)
+#   
+#   for (metric in metrics) {
+#     
+#     if (length(fig_metric_2D_vs_2D_comparison_categorised[[metric]][[category]]) == 0) {
+#       next 
+#     }
+#     
+#     grid.arrange(do.call(arrangeGrob, c(fig_metric_2D_vs_2D_comparison_categorised[[metric]][[category]])))
+#   }
+#   
+#   dev.off() 
+# }
 
