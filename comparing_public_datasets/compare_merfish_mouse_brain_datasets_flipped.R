@@ -645,7 +645,7 @@ plot_tallies_with_categories_bar <- function(tallies, metrics) {
       desc(under),
       desc(consistent)
     )
-  write.csv(proportions_df, "~/R/values_from_figures/mouse_brain_proportion_values.csv")
+  # write.csv(proportions_df, "~/R/values_from_figures/mouse_brain_proportion_values.csv")
   
   # Get metric order from here
   metric_order <- proportions_df %>% pull(metric)
