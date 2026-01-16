@@ -669,7 +669,16 @@ plot_tallies_with_categories_bar <- function(tallies, metrics) {
   write.csv(proportions_df, "~/R/values_from_figures/fly_proportion_values.csv")
   
   # Get metric order from here
-  metric_order <- proportions_df %>% pull(metric)
+  metric_order <- proportions_df %>% 
+    mutate(
+      over_under = over + under
+    ) %>% 
+    arrange(
+      desc(inconsistent), 
+      desc(over_under),
+      desc(consistent)
+    ) %>%
+    pull(metric)
   
   # Factor metric
   classified_df$metric <- factor(classified_df$metric, levels = metric_order)
