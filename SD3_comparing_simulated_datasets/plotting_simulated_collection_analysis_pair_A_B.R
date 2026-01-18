@@ -143,7 +143,7 @@ heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_subtract_2D <- function(sim
 
 
 # Plotting setup -- the only part you need to change **** ----- 
-setwd("~/R/S3_data")
+setwd("~/R/SD3_data")
 simulated_collection_analysis <- readRDS("ME_vs_ME_simulated_collection_analysis.RDS")
 group_comparison_name <- "ME_vs_ME_pair_A_B"
 
@@ -163,7 +163,7 @@ fig <- heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_vs_2D(simulated_coll
                                                                   metrics,
                                                                   threshold = 0.05)
 
-setwd("~/R/plots/S3")
+setwd("~/R/plots/SD3")
 pdf(paste(group_comparison_name, "heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_vs_2D.pdf", sep = "_"), width = 10, height = 3)
 print(fig)
 dev.off()
@@ -173,13 +173,13 @@ fig <- heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_subtract_2D(simulate
                                                                         metrics,
                                                                         threshold = 0.05)
 
-setwd("~/R/plots/S3")
+setwd("~/R/plots/SD3")
 pdf(paste(group_comparison_name, "heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_subtract_2D.pdf", sep = "_"), width = 10, height = 2)
 print(fig)
 dev.off()
 
 # Alternative plotting - combining all collections? -----
-setwd("~/R/S3_data")
+setwd("~/R/SD3_data")
 ME_vs_ME_simulated_collection_analysis <- readRDS("ME_vs_ME_simulated_collection_analysis.RDS")
 MN_vs_MN_simulated_collection_analysis <- readRDS("MN_vs_MN_simulated_collection_analysis.RDS")
 ME_vs_lME_simulated_collection_analysis <- readRDS("ME_vs_lME_simulated_collection_analysis.RDS")
@@ -357,7 +357,7 @@ metrics <- c("AMD",
 fig <- heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_vs_2D(simulated_collection_analyses,
                                                                                        metrics,
                                                                                        0.05)
-setwd("~/R/plots/S3")
+setwd("~/R/plots/SD3")
 pdf("heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_vs_2D.pdf", width = 9, height = 8.5)
 print(fig)
 dev.off()
@@ -368,7 +368,7 @@ dev.off()
 fig <- heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_subtract_2D(simulated_collection_analyses,
                                                                                              metrics,
                                                                                              0.05)
-setwd("~/R/plots/S3")
+setwd("~/R/plots/SD3")
 pdf("heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_subtract_2D.pdf", width = 6.5, height = 7.5)
 print(fig)
 dev.off()
