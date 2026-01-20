@@ -216,7 +216,7 @@ plot_metric_3D_vs_2D_comparison <- function(metric_3D_vs_2D_comparison_results,
           geom_jitter(width = 0.2, color = "#0062c5", alpha = 0.5) +
           geom_point(data = metric_data3D_subset, aes(x = dataset, y = value),
                      color = "#bb0036", shape = 8, size = 3) +
-          labs(title = paste(reference_cell_type, target_cell_type, sep = "/"), x = "Mouse brain region", y = metric) +
+          labs(title = paste(reference_cell_type, target_cell_type, sep = "/"), x = "Mouse brain region", y = sub("_AUC$", "", metric)) +
           theme_minimal() +
           theme(panel.border = element_rect(color = "black", fill = NA, linewidth = 1),
                 plot.title = element_text(hjust = 0.5),) +
@@ -312,7 +312,7 @@ plot_metric_3D_vs_2D_comparison_no_box_plot <- function(metric_3D_vs_2D_comparis
           geom_jitter(width = 0.2, color = "#0062c5", alpha = 0.5) +
           geom_point(data = metric_data3D_subset, aes(x = dataset, y = value),
                      color = "#bb0036", shape = 8, size = 3) +
-          labs(title = paste(reference_cell_type, target_cell_type, sep = "/"), x = "Mouse brain region", y = metric) +
+          labs(title = paste(reference_cell_type, target_cell_type, sep = "/"), x = "Mouse brain region", y = sub("_AUC$", "", metric)) +
           theme_minimal() +
           theme(panel.border = element_rect(color = "black", fill = NA, linewidth = 1),
                 plot.title = element_text(hjust = 0.5),) +
@@ -517,7 +517,7 @@ plot_tallies_with_categories <- function(tallies, metrics) {
     )
     
     fig <- Heatmap(classified_mat, 
-                   column_title = metric,
+                   column_title = sub("_AUC$", "", metric),
                    name = "label",
                    cluster_rows = FALSE,
                    cluster_columns = FALSE,
@@ -606,6 +606,9 @@ plot_tallies_with_categories_bar <- function(tallies, metrics) {
   }
   # Plot proportions
   classified_df <- subset(classified_df, category != "N/A")
+  
+  # Remove AUC from metric names
+  classified_df$metric <- sub("_AUC$", "", classified_df$metric)
   
   # Create a proportions_df to save values
   proportions_df <- classified_df %>%
