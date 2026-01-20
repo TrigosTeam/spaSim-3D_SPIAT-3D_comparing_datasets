@@ -40,6 +40,11 @@ heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_vs_2D <- function(simulated
     metrics_vs_pairs_matrix2D[1, metric] <- sum(p_values2D[!is.na(p_values2D)] < threshold) / sum(!is.na(p_values2D))
   }
   
+  # Remove AUC from metrics
+  metrics <- sub("_AUC$", "", metrics)
+  colnames(metrics_vs_pairs_matrix3D) <- metrics
+  colnames(metrics_vs_pairs_matrix2D) <- metrics
+  
   heatmap3D <- Heatmap(metrics_vs_pairs_matrix3D, 
                        name = "sig",
                        col = colorRamp2(c(0, 0.5, 1),
@@ -113,6 +118,10 @@ heatmap_p_values_for_each_metric_and_for_pair_A_B_3D_subtract_2D <- function(sim
   }
   
   metrics_vs_pairs_matrix_diff <- metrics_vs_pairs_matrix3D - metrics_vs_pairs_matrix2D
+  
+  # Remove AUC from metrics
+  metrics <- sub("_AUC$", "", metrics)
+  colnames(metrics_vs_pairs_matrix_diff) <- metrics
   
   heatmap_diff <- Heatmap(metrics_vs_pairs_matrix_diff, 
                           name = "sig_dff",
@@ -229,6 +238,11 @@ heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_vs_2D 
     } 
   }
   
+  # Remove AUC from metrics
+  metrics <- sub("_AUC$", "", metrics)
+  colnames(metrics_vs_collections_matrix3D) <- metrics
+  colnames(metrics_vs_collections_matrix2D) <- metrics
+  
   heatmap3D <- Heatmap(metrics_vs_collections_matrix3D, 
                        name = "sig",
                        col = colorRamp2(c(0, 0.5, 1),
@@ -306,6 +320,10 @@ heatmap_p_values_for_each_metric_and_for_pair_A_B_for_many_collections_3D_subtra
   }
   
   metrics_vs_collections_matrix <- metrics_vs_collections_matrix3D - metrics_vs_collections_matrix2D
+  
+  # Remove AUC from metrics
+  metrics <- sub("_AUC$", "", metrics)
+  colnames(metrics_vs_collections_matrix) <- metrics
   
   heatmap_diff <- Heatmap(
     metrics_vs_collections_matrix, 
