@@ -62,7 +62,7 @@ gradient_radii_metrics <- c("MS", "NMS", "ACIN", "ANE", "ANC", "COO", "CK", "CL"
 
 ## Turn threshold radii metrics into AUC and add to metric_df list
 thresholds <- seq(0.01, 1, 0.01)
-threshold_colnames <- paste("t", thresholds, sep = "")
+thresholds_colnames <- paste("t", thresholds, sep = "")
 
 
 for (stomics_dataset_name in stomics_dataset_names) {
@@ -87,13 +87,17 @@ for (stomics_dataset_name in stomics_dataset_names) {
   
   # PBP_AUC 3D
   PBP_df <- metric_df_list[["PBP"]]
-  PBP_df$PBP_AUC <- apply(PBP_df[ , threshold_colnames], 1, sum) * 0.01
+  PBP_df$PBP_AUC <- apply(PBP_df[ , thresholds_colnames], 1, function(y) {
+    sum(diff(thresholds) * (head(y, -1) + tail(y, -1)) / 2)
+  })
   PBP_AUC_df <- PBP_df[ , c("slice", "reference", "target", "PBP_AUC")]
   metric_df_list[["PBP_AUC"]] <- PBP_AUC_df
   
   # EBP_AUC 3D
   EBP_df <- metric_df_list[["EBP"]]
-  EBP_df$EBP_AUC <- apply(EBP_df[ , threshold_colnames], 1, sum) * 0.01
+  EBP_df$EBP_AUC <- apply(EBP_df[ , thresholds_colnames], 1, function(y) {
+    sum(diff(thresholds) * (head(y, -1) + tail(y, -1)) / 2)
+  })
   EBP_AUC_df <- EBP_df[ , c("slice", "cell_types", "EBP_AUC")]
   metric_df_list[["EBP_AUC"]] <- EBP_AUC_df
   
