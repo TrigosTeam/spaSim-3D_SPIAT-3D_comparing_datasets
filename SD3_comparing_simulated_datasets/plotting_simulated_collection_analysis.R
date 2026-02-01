@@ -56,7 +56,7 @@ box_plot_p_values_for_each_metric_and_pair_3D_vs_2D <- function(simulated_collec
       geom_jitter(width = 0.2, color = "#0062c5", alpha = 0.5) +
       geom_hline(yintercept = (0.05), color = "#bb0036", linetype = "dashed") + # horizontal line at p = 0.05
       facet_wrap(~pair, scales = "free") +
-      labs(title = metric,
+      labs(title = sub("_AUC$", "", metric),     # Remove AUC from metrics
            x = "Dimension",
            y = "p-value") +
       ylim(0, 1) +
@@ -98,7 +98,7 @@ box_plot_log_p_values_for_each_metric_and_pair_3D_vs_2D <- function(simulated_co
       geom_jitter(width = 0.2, color = "#0062c5", alpha = 0.5) +
       geom_hline(yintercept = log(0.05), color = "#bb0036", linetype = "dashed") + # horizontal line at p = 0.05
       facet_wrap(~pair, scales = "free") +
-      labs(title = metric,
+      labs(title = sub("_AUC$", "", metric),     # Remove AUC from metrics
            x = "Dimension",
            y = "log(p-value)") +
       ylim(log(0.001), log(1)) +
@@ -155,6 +155,11 @@ heatmap_p_values_for_each_metric_and_pair_3D_vs_2D <- function(simulated_collect
       metrics_vs_pairs_matrix2D[pair, metric] <- sum(p_values2D[!is.na(p_values2D)] < threshold) / sum(!is.na(p_values2D))
     }
   }
+  
+  # Remove AUC from metrics
+  metrics <- sub("_AUC$", "", metrics)
+  colnames(metrics_vs_pairs_matrix3D) <- metrics
+  colnames(metrics_vs_pairs_matrix2D) <- metrics
   
   heatmap3D <- Heatmap(metrics_vs_pairs_matrix3D, 
                        name = "sig",
@@ -233,6 +238,10 @@ heatmap_p_values_for_each_metric_and_pair_3D_subtract_2D <- function(simulated_c
 
   metrics_vs_pairs_matrix_diff <- metrics_vs_pairs_matrix3D - metrics_vs_pairs_matrix2D
 
+  # Remove AUC from metrics
+  metrics <- sub("_AUC$", "", metrics)
+  colnames(metrics_vs_pairs_matrix_diff) <- metrics
+  
   heatmap_diff <- Heatmap(metrics_vs_pairs_matrix_diff, 
                           name = "sig_dff",
                           col = colorRamp2(c(-1, 0, 1),
