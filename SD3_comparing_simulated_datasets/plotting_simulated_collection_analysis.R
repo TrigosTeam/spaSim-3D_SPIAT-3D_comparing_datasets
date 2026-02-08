@@ -1,3 +1,5 @@
+# Code to plot simulated collection analysis
+
 # Libraries ----
 library(ggplot2)
 library(ComplexHeatmap)

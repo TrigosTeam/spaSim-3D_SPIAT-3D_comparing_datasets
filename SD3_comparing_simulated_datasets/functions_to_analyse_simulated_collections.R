@@ -1,3 +1,5 @@
+# Code to perform simulated collection analysis (SD3 analysis)
+
 # Set seed for consistency
 set.seed(678999821)
 

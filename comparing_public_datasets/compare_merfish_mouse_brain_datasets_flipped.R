@@ -1,3 +1,7 @@
+# Code to show comparison of MERFISH mouse brain datasets.
+# Requires analysis of each mouse brain sample using function in 'spaSim-3D_SPIAT-3D_analysing_individual_datasets' repo.
+# 'flipped' as the hypothalamus dataset is being used as a reference, rather than the cortex.
+
 ### Libraries -----
 library(SpatialExperiment)
 library(plotly)

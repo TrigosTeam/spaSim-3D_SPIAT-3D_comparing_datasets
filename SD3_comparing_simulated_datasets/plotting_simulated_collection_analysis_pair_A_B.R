@@ -1,3 +1,5 @@
+# Code to plot simulated collection analysis, showing only cell pair A/B (ignoring cell pairs A/A, B/A, B/B)
+
 # Libraries ----
 library(ggplot2)
 library(ComplexHeatmap)

@@ -1,3 +1,6 @@
+# Code to show comparison of stomics fly (drosophila) datasets.
+# Requires analysis of each fly sample using function in 'spaSim-3D_SPIAT-3D_analysing_individual_datasets' repo.
+
 ### Libraries -----
 library(SpatialExperiment)
 library(plotly)
